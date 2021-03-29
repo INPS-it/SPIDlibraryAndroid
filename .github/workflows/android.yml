@@ -1,0 +1,25 @@
+name: Android CI
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Build
+        run: ./gradlew assemble
+      - name: Publish library
+        run: ./gradlew spid:publish -PGITHUB_USER=${{ secrets.GITHUB_USER }} -PGITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
