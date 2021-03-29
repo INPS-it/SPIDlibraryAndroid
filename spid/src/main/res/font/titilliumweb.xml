@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+SPDX-FileCopyrightText: 2021 Istituto Nazionale Previdenza Sociale
+
+SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font
+        app:font="@font/titilliumweb_regular"
+        app:fontStyle="normal"
+        app:fontWeight="400" />
+    <font
+        app:font="@font/titilliumweb_bold"
+        app:fontStyle="normal"
+        app:fontWeight="700" />
+    <font
+        app:font="@font/titilliumweb_italic"
+        app:fontStyle="italic"
+        app:fontWeight="400" />
+</font-family>

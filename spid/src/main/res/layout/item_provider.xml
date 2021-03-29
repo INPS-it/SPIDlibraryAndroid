@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+SPDX-FileCopyrightText: 2021 Istituto Nazionale Previdenza Sociale
+
+SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iv_provider"
+    android:layout_width="wrap_content"
+    android:layout_height="60dp"
+    android:adjustViewBounds="true"
+    android:padding="16dp"
+    android:scaleType="fitStart"
+    tools:src="@drawable/ic_spid_idp_arubaid" />

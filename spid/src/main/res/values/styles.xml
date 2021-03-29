@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+SPDX-FileCopyrightText: 2021 Istituto Nazionale Previdenza Sociale
+
+SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:fontFamily">@font/titilliumweb</item>
+    </style>
+
+    <style name="SPIDDialog" parent="Theme.MaterialComponents.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+</resources>

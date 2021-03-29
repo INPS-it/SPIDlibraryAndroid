@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'maven-publish'
+
+afterEvaluate { project ->
+    publishing {
+        repositories {
+            maven {
+                url = "https://maven.pkg.github.com/" + GITHUB_OWNER + "/" + GITHUB_REPOSITORY
+                credentials {
+                    username = GITHUB_USER
+                    password = GITHUB_TOKEN
+                }
+            }
+        }
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId LIBRARY_GROUP
+                version LIBRARY_VERSION
+                artifactId LIBRARY_ARTIFACT
+                setPomConfiguration(pom)
+            }
+        }
+    }
+}
+
+def setPomConfiguration(pom) {
+    pom.name = POM_NAME
+    pom.packaging = POM_PACKAGING
+    pom.description = POM_DESCRIPTION
+    pom.url = POM_URL
+
+    if (hasProperty('POM_LICENSE_NAME')) {
+        pom.licenses {
+            license {
+                name = POM_LICENCE_NAME
+                url = POM_LICENCE_URL
+                distribution = POM_LICENCE_DIST
+            }
+        }
+    }
+
+    pom.developers {
+        developer {
+            id = POM_DEVELOPER_ID
+            name = POM_DEVELOPER_NAME
+        }
+    }
+}

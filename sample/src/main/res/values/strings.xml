@@ -1,0 +1,15 @@
+<!--
+
+SPDX-FileCopyrightText: 2021 Istituto Nazionale Previdenza Sociale
+
+SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<resources>
+    <string name="app_name" translatable="false">SPID login sample</string>
+    <string name="btn_spid_login">LOGIN WITH SPID</string>
+    <string name="something_wrong">Something went wrong</string>
+    <string name="request_cancelled">SPID login request cancelled</string>
+    <string name="login_succesfull">Login successful</string>
+    <string name="msg_no_connection">A network error has occurred, please check your internet connection or try again shortly</string>
+</resources>

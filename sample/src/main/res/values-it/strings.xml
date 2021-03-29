@@ -1,0 +1,14 @@
+<!--
+
+SPDX-FileCopyrightText: 2021 Istituto Nazionale Previdenza Sociale
+
+SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<resources>
+    <string name="btn_spid_login">ACCEDI CON SPID</string>
+    <string name="something_wrong">Qualcosa non ha funzionato</string>
+    <string name="request_cancelled">Richiesta di login annullata</string>
+    <string name="login_succesfull">Accesso eseguito correttamente</string>
+    <string name="msg_no_connection">Si è verificato un errore di rete, controlla la tua connessione internet oppure riprova tra poco</string>
+</resources>

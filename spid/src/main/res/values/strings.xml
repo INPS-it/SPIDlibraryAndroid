@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+SPDX-FileCopyrightText: 2021 Istituto Nazionale Previdenza Sociale
+
+SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<resources>
+    <string name="app_name" translatable="false">SPID</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="try_again">Try again</string>
+    <string name="attention">Attention</string>
+    <string name="cancel">Cancel</string>
+    <string name="more_info">More information</string>
+    <string name="no_spid">"Don't have SPID?"</string>
+</resources>

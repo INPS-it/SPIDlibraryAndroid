@@ -1,0 +1,23 @@
+<!--
+SPDX-FileCopyrightText: 2021 Istituto Nazionale Previdenza Sociale
+
+SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="it.inps.spid">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true">
+
+        <activity android:name="it.inps.spid.activity.IdentityProviderSelectorActivity" />
+
+    </application>
+
+</manifest>
