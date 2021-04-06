@@ -26,17 +26,16 @@ data class SpidParams(
                 timeout <= 0 -> false
                 spidPageInfoUrl.isEmpty() -> false
                 requestSpidPageUrl.isEmpty() -> false
-                authPageUrl.isNotEmpty() && !isValidHttpsUrl(authPageUrl) -> return false
-                callbackPageUrl.isNotEmpty() && !isValidHttpsUrl(callbackPageUrl) -> return false
-                spidPageInfoUrl.isNotEmpty() && !isValidHttpsUrl(spidPageInfoUrl) -> return false
-                requestSpidPageUrl.isNotEmpty() && !isValidHttpsUrl(requestSpidPageUrl) -> return false
+                authPageUrl.isNotEmpty() && !isValidHttpsUrl(authPageUrl) -> false
+                callbackPageUrl.isNotEmpty() && !isValidHttpsUrl(callbackPageUrl) -> false
+                spidPageInfoUrl.isNotEmpty() && !isValidHttpsUrl(spidPageInfoUrl) -> false
+                requestSpidPageUrl.isNotEmpty() && !isValidHttpsUrl(requestSpidPageUrl) -> false
                 else -> true
             }
         }
 
         private fun isValidHttpsUrl(url: String): Boolean {
-            return url.length > 7 &&
-                    url.substring(0, 8).equals("https://", ignoreCase = true)
+            return url.startsWith("https://", ignoreCase = true)
         }
     }
 }

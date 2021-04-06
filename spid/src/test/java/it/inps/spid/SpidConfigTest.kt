@@ -114,4 +114,16 @@ class SpidConfigTest {
         )
         assertFalse(spidConfig.isSpidConfigValid())
     }
+
+    @Test
+    fun `SpidConfig with mixcase https url`() {
+        val spidConfig = SpidParams.Config(
+                "htTps://test",
+                "httPs://TEST",
+                60,
+                "Https://TEST",
+                "httpS://TEST"
+        )
+        assertTrue(spidConfig.isSpidConfigValid())
+    }
 }
