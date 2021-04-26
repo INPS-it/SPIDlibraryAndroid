@@ -15,9 +15,4 @@ SPDX-License-Identifier: BSD-3-Clause
         <item name="android:fontFamily">@font/titilliumweb</item>
     </style>
 
-    <style name="SPIDDialog" parent="Theme.MaterialComponents.Dialog">
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowMinWidthMajor">90%</item>
-        <item name="android:windowMinWidthMinor">90%</item>
-    </style>
 </resources>

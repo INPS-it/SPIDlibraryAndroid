@@ -65,6 +65,11 @@ class SpidDialogFragment : DialogFragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentDialogSpidBinding.inflate(inflater, container, false)
         return binding.root

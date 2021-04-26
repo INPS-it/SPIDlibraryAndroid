@@ -11,6 +11,8 @@ import android.os.Bundle
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.recyclerview.widget.DividerItemDecoration
+import it.inps.spid.R
 import it.inps.spid.adapter.IdentityProvidersAdapter
 import it.inps.spid.databinding.ActivityProviderSelectorBinding
 import it.inps.spid.fragment.SpidDialogFragment
@@ -47,6 +49,14 @@ class IdentityProviderSelectorActivity : AppCompatActivity(), SpidDialogFragment
             openBrowser(spidConfig.requestSpidPageUrl)
         }
 
+        if (resources.getBoolean(R.bool.show_items_divider)) {
+            binding.recyclerviewProviders.addItemDecoration(
+                    DividerItemDecoration(
+                            this,
+                            DividerItemDecoration.VERTICAL
+                    )
+            )
+        }
         binding.recyclerviewProviders.adapter = IdentityProvidersAdapter(idpList.shuffled()) {
             if (isNetworkAvailable()) {
                 if (spidConfig.isSpidConfigValid()) {

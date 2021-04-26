@@ -25,7 +25,7 @@ repositories {
    }
 }
 dependencies {
-    implementation("it.inps.spid:library:1.0.1")
+    implementation("it.inps.spid:library:1.0.2")
 }
 ```
 2. Declare a variable to register the `IdentityProviderSelectorActivityContract` contract using the `registerForActivityResult(I)` method which will give a `SpidResult` object as a return value:
@@ -43,17 +43,17 @@ private val startSpidFlow = registerForActivityResult(IdentityProviderSelectorAc
 ```
 The `SpidResult` object consists of a `SpidEvent` object and an optional `SpidResponse` object. The `SpidResponse` object is only available in case of successful login.
 
-3. Create a `SpidConfig` object containing the `authPageUrl` url, the `callbackPageUrl` url and an optional timeout `int` value (default value: 30sec): 
+3. Create a `SpidParams.Config` object containing the `authPageUrl` url, the `callbackPageUrl` url and an optional timeout `int` value (default value: 30sec): 
 ```kotlin
-val spidConfig = SpidConfig(
+val spidConfig = SpidParams.Config(
                     "https://<insert the auth url here>", // TODO
                     "https://<insert the callback url here>", // TODO
                     60
     )
 ```
-4. Use the `IdentityProvider.Builder` builder to add the identity providers:
+4. Use the `IdentityProvider.Builder()` builder to add the identity providers:
 ```kotlin
-val idpList = IdentityProvider.Builder
+val idpList = IdentityProvider.Builder()
                    .addAruba(idpParameter = "<insert the idp parameter here>")
                    .addPoste(idpParameter = "<insert the idp parameter here>")
                    .addTim(idpParameter = "<insert the idp parameter here>")
