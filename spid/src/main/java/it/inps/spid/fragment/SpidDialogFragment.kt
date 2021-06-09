@@ -168,7 +168,7 @@ class SpidDialogFragment : DialogFragment() {
             override fun run() {
                 lifecycleScope.launch(Dispatchers.Main) {
                     spidCallback.onSpidFailure(SpidEvent.SESSION_TIMEOUT)
-                    dismiss()
+                    dismissAllowingStateLoss()
                 }
             }
         }, spidConfig.timeout.toLong() * 1000)
