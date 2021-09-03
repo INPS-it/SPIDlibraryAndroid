@@ -6,17 +6,20 @@
 package it.inps.spid.fragment
 
 import android.content.Context
+import android.net.http.SslError
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.CookieManager
+import android.webkit.SslErrorHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.annotation.NonNull
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
+import it.inps.spid.R
 import it.inps.spid.activity.IdentityProviderSelectorActivity
 import it.inps.spid.databinding.FragmentDialogSpidBinding
 import it.inps.spid.model.SpidParams
@@ -94,6 +97,14 @@ class SpidDialogFragment : DialogFragment() {
                     dismiss()
                 } else {
                     startSessionTimeoutTask(true)
+                }
+            }
+
+            override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
+                if (resources.getBoolean(R.bool.ignore_ssl_errors)) {
+                    handler?.proceed()
+                } else {
+                    super.onReceivedSslError(view, handler, error)
                 }
             }
         }
