@@ -15,10 +15,10 @@ import it.inps.spid.utils.*
 
 class IdentityProviderSelectorActivityContract : ActivityResultContract<SpidParams, SpidResult>() {
 
-    override fun createIntent(context: Context, spidParams: SpidParams?): Intent {
+    override fun createIntent(context: Context, spidParams: SpidParams): Intent {
         return Intent(context, IdentityProviderSelectorActivity::class.java).apply {
-            putExtra(IdentityProviderSelectorActivity.EXTRA_SPID_CONFIG, spidParams?.config)
-            putExtra(IdentityProviderSelectorActivity.EXTRA_IDP_LIST, spidParams?.idpList)
+            putExtra(IdentityProviderSelectorActivity.EXTRA_SPID_CONFIG, spidParams.config)
+            putExtra(IdentityProviderSelectorActivity.EXTRA_IDP_LIST, spidParams.idpList)
         }
     }
 
@@ -26,10 +26,10 @@ class IdentityProviderSelectorActivityContract : ActivityResultContract<SpidPara
         return when (resultCode) {
             SUCCESS -> {
                 SpidResult(
-                        SpidEvent.SUCCESS,
-                        intent?.getSerializableExtra(
-                                IdentityProviderSelectorActivity.EXTRA_SPID_RESPONSE
-                        ) as SpidResponse
+                    SpidEvent.SUCCESS,
+                    intent?.getSerializableExtra(
+                        IdentityProviderSelectorActivity.EXTRA_SPID_RESPONSE
+                    ) as SpidResponse
                 )
             }
             GENERIC_ERROR -> SpidResult(SpidEvent.GENERIC_ERROR)

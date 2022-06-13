@@ -10,5 +10,5 @@ import android.net.ConnectivityManager
 
 fun Context.isNetworkAvailable(): Boolean {
     return (getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)
-            .activeNetworkInfo?.isConnected == true
+        .activeNetworkInfo?.isConnected == true
 }

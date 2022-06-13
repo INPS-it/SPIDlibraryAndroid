@@ -9,6 +9,6 @@ import it.inps.spid.utils.SpidEvent
 import java.io.Serializable
 
 data class SpidResult(
-        var spidEvent: SpidEvent,
-        var spidResponse: SpidResponse? = null
+    var spidEvent: SpidEvent,
+    var spidResponse: SpidResponse? = null
 ) : Serializable

@@ -12,16 +12,19 @@ import androidx.recyclerview.widget.RecyclerView
 import it.inps.spid.databinding.ItemProviderBinding
 import it.inps.spid.model.IdentityProvider
 
-class IdentityProvidersAdapter(private var identityProvidersList: List<IdentityProvider>,
-                               private val callback: (String) -> Unit) :
-        RecyclerView.Adapter<IdentityProvidersAdapter.IdentityProvidersViewHolder>() {
+class IdentityProvidersAdapter(
+    private var identityProvidersList: List<IdentityProvider>,
+    private val callback: (String) -> Unit
+) :
+    RecyclerView.Adapter<IdentityProvidersAdapter.IdentityProvidersViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IdentityProvidersViewHolder {
         return IdentityProvidersViewHolder(
-                ItemProviderBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false)
+            ItemProviderBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         )
     }
 
@@ -31,18 +34,21 @@ class IdentityProvidersAdapter(private var identityProvidersList: List<IdentityP
 
     override fun onBindViewHolder(holder: IdentityProvidersViewHolder, position: Int) {
         holder.bind(
-                identityProvidersList[position].accessibilityName,
-                identityProvidersList[position].logo,
-                identityProvidersList[position].idpParameter,
-                callback
+            identityProvidersList[position].accessibilityName,
+            identityProvidersList[position].logo,
+            identityProvidersList[position].idpParameter,
+            callback
         )
     }
 
-    class IdentityProvidersViewHolder(private val binding: ItemProviderBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(@NonNull idpName: String?,
-                 @NonNull resId: Int,
-                 @NonNull idpParameter: String,
-                 @NonNull callback: (String) -> Unit) {
+    class IdentityProvidersViewHolder(private val binding: ItemProviderBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(
+            @NonNull idpName: String?,
+            @NonNull resId: Int,
+            @NonNull idpParameter: String,
+            @NonNull callback: (String) -> Unit
+        ) {
             binding.ivProvider.apply {
                 setImageResource(resId)
                 contentDescription = idpName

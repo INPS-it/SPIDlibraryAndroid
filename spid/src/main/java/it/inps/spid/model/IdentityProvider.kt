@@ -6,7 +6,6 @@
 package it.inps.spid.model
 
 import androidx.annotation.DrawableRes
-import androidx.annotation.IntegerRes
 import it.inps.spid.R
 import java.io.Serializable
 
@@ -28,9 +27,11 @@ import java.io.Serializable
  * </ul>
  *
  */
-data class IdentityProvider(val accessibilityName: String?,
-                            @IntegerRes val logo: Int,
-                            val idpParameter: String) : Serializable {
+data class IdentityProvider(
+    val accessibilityName: String?,
+    @DrawableRes val logo: Int,
+    val idpParameter: String
+) : Serializable {
 
     class Builder {
         private var idpList = ArrayList<IdentityProvider>()
@@ -39,123 +40,143 @@ data class IdentityProvider(val accessibilityName: String?,
             return idpList
         }
 
-        fun addAruba(accessibilityName: String = "Aruba",
-                     idpParameter: String): Builder {
+        fun addAruba(
+            accessibilityName: String = "Aruba",
+            idpParameter: String
+        ): Builder {
             idpList.add(
-                    IdentityProvider(
-                            accessibilityName,
-                            R.drawable.ic_spid_idp_arubaid,
-                            idpParameter
-                    )
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_arubaid,
+                    idpParameter
+                )
             )
             return this
         }
 
-        fun addInfocert(accessibilityName: String = "Infocert",
-                        idpParameter: String): Builder {
+        fun addInfocert(
+            accessibilityName: String = "Infocert",
+            idpParameter: String
+        ): Builder {
             idpList.add(
-                    IdentityProvider(
-                            accessibilityName,
-                            R.drawable.ic_spid_idp_infocertid,
-                            idpParameter
-                    )
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_infocertid,
+                    idpParameter
+                )
             )
             return this
         }
 
-        fun addIntesaSanPaolo(accessibilityName: String = "Intesa San Paolo",
-                              idpParameter: String): Builder {
+        fun addIntesaSanPaolo(
+            accessibilityName: String = "Intesa San Paolo",
+            idpParameter: String
+        ): Builder {
             idpList.add(
-                    IdentityProvider(
-                            accessibilityName,
-                            R.drawable.ic_spid_idp_intesaid,
-                            idpParameter
-                    )
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_intesaid,
+                    idpParameter
+                )
             )
             return this
         }
 
-        fun addLepida(accessibilityName: String = "Lepida",
-                      idpParameter: String): Builder {
+        fun addLepida(
+            accessibilityName: String = "Lepida",
+            idpParameter: String
+        ): Builder {
             idpList.add(
-                    IdentityProvider(
-                            accessibilityName,
-                            R.drawable.ic_spid_idp_lepidaid,
-                            idpParameter
-                    )
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_lepidaid,
+                    idpParameter
+                )
             )
             return this
         }
 
-        fun addNamirial(accessibilityName: String = "Namirial",
-                        idpParameter: String): Builder {
+        fun addNamirial(
+            accessibilityName: String = "Namirial",
+            idpParameter: String
+        ): Builder {
             idpList.add(
-                    IdentityProvider(
-                            accessibilityName,
-                            R.drawable.ic_spid_idp_namirialid,
-                            idpParameter
-                    )
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_namirialid,
+                    idpParameter
+                )
             )
             return this
         }
 
-        fun addPoste(accessibilityName: String = "Poste Italiane",
-                     idpParameter: String): Builder {
+        fun addPoste(
+            accessibilityName: String = "Poste Italiane",
+            idpParameter: String
+        ): Builder {
             idpList.add(
-                    IdentityProvider(
-                            accessibilityName,
-                            R.drawable.ic_spid_idp_posteid,
-                            idpParameter
-                    )
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_posteid,
+                    idpParameter
+                )
             )
             return this
         }
 
-        fun addSielte(accessibilityName: String = "Sielte",
-                      idpParameter: String): Builder {
+        fun addSielte(
+            accessibilityName: String = "Sielte",
+            idpParameter: String
+        ): Builder {
             idpList.add(
-                    IdentityProvider(
-                            accessibilityName,
-                            R.drawable.ic_spid_idp_sielteid,
-                            idpParameter
-                    )
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_sielteid,
+                    idpParameter
+                )
             )
             return this
         }
 
-        fun addSpidItalia(accessibilityName: String = "SPID Italia",
-                          idpParameter: String): Builder {
+        fun addSpidItalia(
+            accessibilityName: String = "SPID Italia",
+            idpParameter: String
+        ): Builder {
             idpList.add(
-                    IdentityProvider(
-                            accessibilityName,
-                            R.drawable.ic_spid_idp_spiditalia,
-                            idpParameter
-                    )
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_spiditalia,
+                    idpParameter
+                )
             )
             return this
         }
 
-        fun addTim(accessibilityName: String = "TIM",
-                   idpParameter: String): Builder {
+        fun addTim(
+            accessibilityName: String = "TIM",
+            idpParameter: String
+        ): Builder {
             idpList.add(
-                    IdentityProvider(
-                            accessibilityName,
-                            R.drawable.ic_spid_idp_timid,
-                            idpParameter
-                    )
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_timid,
+                    idpParameter
+                )
             )
             return this
         }
 
-        fun addCustomIdentityProvider(accessibilityName: String? = null,
-                                      @DrawableRes logo: Int,
-                                      idpParameter: String): Builder {
+        fun addCustomIdentityProvider(
+            accessibilityName: String? = null,
+            @DrawableRes logo: Int,
+            idpParameter: String
+        ): Builder {
             idpList.add(
-                    IdentityProvider(
-                            accessibilityName,
-                            logo,
-                            idpParameter
-                    )
+                IdentityProvider(
+                    accessibilityName,
+                    logo,
+                    idpParameter
+                )
             )
             return this
         }

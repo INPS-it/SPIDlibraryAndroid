@@ -6,6 +6,7 @@
 package it.inps.spid.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.net.http.SslError
 import android.os.Build
 import android.os.Bundle
@@ -70,10 +71,17 @@ class SpidDialogFragment : DialogFragment() {
 
     override fun onStart() {
         super.onStart()
-        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        dialog?.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentDialogSpidBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -100,12 +108,31 @@ class SpidDialogFragment : DialogFragment() {
                 }
             }
 
-            override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
+            override fun onReceivedSslError(
+                view: WebView?,
+                handler: SslErrorHandler?,
+                error: SslError?
+            ) {
                 if (resources.getBoolean(R.bool.ignore_ssl_errors)) {
                     handler?.proceed()
                 } else {
                     super.onReceivedSslError(view, handler, error)
                 }
+            }
+
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                url?.let {
+                    if (it.contains("intent://")) {
+                        try {
+                            Intent.parseUri(it, Intent.URI_INTENT_SCHEME).also { intent ->
+                                startActivity(intent)
+                            }
+                        } catch (unused: Exception) {
+                        }
+                        view?.stopLoading()
+                    }
+                }
+                return super.shouldOverrideUrlLoading(view, url)
             }
         }
         binding.webviewSpid.apply {
@@ -117,6 +144,7 @@ class SpidDialogFragment : DialogFragment() {
                 setSupportZoom(true)
                 builtInZoomControls = true
                 displayZoomControls = false
+                userAgentString = userAgentString.replace("wv", "")
             }
             scrollBarStyle = WebView.SCROLLBARS_OUTSIDE_OVERLAY
             isScrollbarFadingEnabled = false

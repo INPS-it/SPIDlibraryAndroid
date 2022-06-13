@@ -51,21 +51,21 @@ class IdentityProviderSelectorActivity : AppCompatActivity(), SpidDialogFragment
 
         if (resources.getBoolean(R.bool.show_items_divider)) {
             binding.recyclerviewProviders.addItemDecoration(
-                    DividerItemDecoration(
-                            this,
-                            DividerItemDecoration.VERTICAL
-                    )
+                DividerItemDecoration(
+                    this,
+                    DividerItemDecoration.VERTICAL
+                )
             )
         }
         binding.recyclerviewProviders.adapter = IdentityProvidersAdapter(idpList.shuffled()) {
             if (isNetworkAvailable()) {
                 if (spidConfig.isSpidConfigValid()) {
                     SpidDialogFragment.newInstance(
-                            it,
-                            spidConfig
+                        it,
+                        spidConfig
                     ).show(
-                            supportFragmentManager,
-                            SpidDialogFragment::class.java.simpleName
+                        supportFragmentManager,
+                        SpidDialogFragment::class.java.simpleName
                     )
                 } else {
                     setResult(SPID_CONFIG_ERROR)
@@ -79,7 +79,7 @@ class IdentityProviderSelectorActivity : AppCompatActivity(), SpidDialogFragment
     }
 
     private fun openBrowser(@NonNull url: String) =
-            CustomTabsIntent.Builder().build().launchUrl(this, Uri.parse(url))
+        CustomTabsIntent.Builder().build().launchUrl(this, Uri.parse(url))
 
     override fun onBackPressed() {
         setResult(USER_CANCELLED)

@@ -1,1 +1,5 @@
 /build
+/release
+/debug
+*.DS_Store
+*.apk

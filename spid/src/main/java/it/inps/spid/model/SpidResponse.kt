@@ -8,5 +8,5 @@ package it.inps.spid.model
 import java.io.Serializable
 
 data class SpidResponse(
-        var cookies: List<String>
+    var cookies: List<String>
 ) : Serializable
