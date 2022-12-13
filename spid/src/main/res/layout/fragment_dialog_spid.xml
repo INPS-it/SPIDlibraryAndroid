@@ -14,5 +14,5 @@ SPDX-License-Identifier: BSD-3-Clause
     <WebView
         android:id="@+id/webview_spid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 </FrameLayout>
