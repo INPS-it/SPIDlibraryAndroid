@@ -1,5 +1,5 @@
 // 
-// SPDX-FileCopyrightText: 2021 Istituto Nazionale Previdenza Sociale
+// SPDX-FileCopyrightText: 2023 Istituto Nazionale Previdenza Sociale
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -73,6 +73,7 @@ class MainActivity : AppCompatActivity() {
                 .addAruba(idpParameter = "")
                 .addPoste(idpParameter = "")
                 .addTim(idpParameter = "")
+                .addTeamSystem(idpParameter = "")
                 .addCustomIdentityProvider(
                     "CUSTOM IDENTITY PROVIDER",
                     R.drawable.ic_spid_idp_custom,

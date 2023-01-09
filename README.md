@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2021 Istituto Nazionale Previdenza Sociale
+SPDX-FileCopyrightText: 2023 Istituto Nazionale Previdenza Sociale
 
 SPDX-License-Identifier: BSD-3-Clause
 -->
@@ -25,7 +25,7 @@ repositories {
    }
 }
 dependencies {
-    implementation("it.inps.spid:library:1.0.6")
+    implementation("it.inps.spid:library:1.0.7")
 }
 ```
 2. Declare a variable to register the `IdentityProviderSelectorActivityContract` contract using the `registerForActivityResult(I)` method which will give a `SpidResult` object as a return value:

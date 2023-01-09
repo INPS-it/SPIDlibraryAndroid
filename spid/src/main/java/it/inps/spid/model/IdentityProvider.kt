@@ -1,5 +1,5 @@
 // 
-// SPDX-FileCopyrightText: 2021 Istituto Nazionale Previdenza Sociale
+// SPDX-FileCopyrightText: 2023 Istituto Nazionale Previdenza Sociale
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -24,6 +24,7 @@ import java.io.Serializable
  *     <li>SIELTE: R.drawable.ic_spid_idp_sielteid</li>
  *     <li>SPID ITALIA: R.drawable.ic_spid_idp_spiditalia</li>
  *     <li>TIM: R.drawable.ic_spid_idp_timid</li>
+ *     <li>TEAMSYSTEM: R.drawable.ic_spid_idp_teamsystemid</li>
  * </ul>
  *
  */
@@ -160,6 +161,20 @@ data class IdentityProvider(
                 IdentityProvider(
                     accessibilityName,
                     R.drawable.ic_spid_idp_timid,
+                    idpParameter
+                )
+            )
+            return this
+        }
+
+        fun addTeamSystem(
+            accessibilityName: String = "TeamSystem",
+            idpParameter: String
+        ): Builder {
+            idpList.add(
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_teamsystemid,
                     idpParameter
                 )
             )
