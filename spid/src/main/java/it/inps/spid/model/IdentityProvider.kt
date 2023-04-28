@@ -17,7 +17,8 @@ import java.io.Serializable
  * <ul>
  *     <li>ARUBA: R.drawable.ic_spid_idp_arubaid</li>
  *     <li>INFOCERT: R.drawable.ic_spid_idp_infocertid</li>
- *     <li>INTESA SAN PAOLO: R.drawable.ic_spid_idp_intesaid</li>
+ *     <li>INFOCAMERE: R.drawable.ic_spid_idp_infocamereid</li>
+ *     <li>ETNA: R.drawable.ic_spid_idp_etnaid</li>
  *     <li>LEPIDA: R.drawable.ic_spid_idp_lepidaid</li>
  *     <li>NAMIRIALIID: R.drawable.ic_spid_idp_namirialid</li>
  *     <li>POSTE: R.drawable.ic_spid_idp_posteid</li>
@@ -69,14 +70,28 @@ data class IdentityProvider(
             return this
         }
 
-        fun addIntesaSanPaolo(
-            accessibilityName: String = "Intesa San Paolo",
+        fun addInfoCamere(
+            accessibilityName: String = "InfoCamere",
             idpParameter: String
         ): Builder {
             idpList.add(
                 IdentityProvider(
                     accessibilityName,
-                    R.drawable.ic_spid_idp_intesaid,
+                    R.drawable.ic_spid_idp_infocamereid,
+                    idpParameter
+                )
+            )
+            return this
+        }
+
+        fun addEtna(
+            accessibilityName: String = "Etna",
+            idpParameter: String
+        ): Builder {
+            idpList.add(
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_etnaid,
                     idpParameter
                 )
             )

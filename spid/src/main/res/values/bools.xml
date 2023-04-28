@@ -10,4 +10,5 @@ SPDX-License-Identifier: BSD-3-Clause
 <resources>
     <bool name="show_items_divider">true</bool>
     <bool name="ignore_ssl_errors">false</bool>
+    <bool name="log_sdk_errors">false</bool>
 </resources>

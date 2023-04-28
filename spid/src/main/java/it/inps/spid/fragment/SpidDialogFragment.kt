@@ -10,6 +10,7 @@ import android.content.Intent
 import android.net.http.SslError
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +28,8 @@ import it.inps.spid.model.SpidResponse
 import it.inps.spid.utils.SpidEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.*
+import java.util.Timer
+import java.util.TimerTask
 
 class SpidDialogFragment : DialogFragment() {
 
@@ -91,6 +93,9 @@ class SpidDialogFragment : DialogFragment() {
         val postData = arguments?.getString(EXTRA_POST_DATA_PROVIDER)
         if (postData.isNullOrEmpty()) {
             cancelSessionTimeoutTask()
+            if (resources.getBoolean(R.bool.log_sdk_errors)) {
+                Log.d("SpidDialogFragment", "postData is null")
+            }
             spidCallback.onSpidFailure(SpidEvent.GENERIC_ERROR)
             dismiss()
         }
@@ -182,6 +187,9 @@ class SpidDialogFragment : DialogFragment() {
                     }
                 }
             } else {
+                if (resources.getBoolean(R.bool.log_sdk_errors)) {
+                    Log.e("SpidDialogFragment", "cookies == null")
+                }
                 cancelSessionTimeoutTask()
                 dismiss()
                 spidCallback.onSpidFailure(SpidEvent.GENERIC_ERROR)
