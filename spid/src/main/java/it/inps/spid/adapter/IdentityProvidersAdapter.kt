@@ -7,7 +7,6 @@ package it.inps.spid.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import it.inps.spid.databinding.ItemProviderBinding
 import it.inps.spid.model.IdentityProvider
@@ -44,10 +43,10 @@ class IdentityProvidersAdapter(
     class IdentityProvidersViewHolder(private val binding: ItemProviderBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            @NonNull idpName: String?,
-            @NonNull resId: Int,
-            @NonNull idpParameter: String,
-            @NonNull callback: (String) -> Unit
+            idpName: String?,
+            resId: Int,
+            idpParameter: String,
+            callback: (String) -> Unit
         ) {
             binding.ivProvider.apply {
                 setImageResource(resId)

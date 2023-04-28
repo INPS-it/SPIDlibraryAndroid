@@ -17,7 +17,6 @@ import android.webkit.CookieManager
 import android.webkit.SslErrorHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.annotation.NonNull
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import it.inps.spid.R
@@ -101,8 +100,8 @@ class SpidDialogFragment : DialogFragment() {
                 addCookies(url)
                 if (url.equals(spidConfig.callbackPageUrl, ignoreCase = true)) {
                     cancelSessionTimeoutTask()
-                    spidCallback.onSpidSuccess(SpidResponse(getCookiesList()))
                     dismiss()
+                    spidCallback.onSpidSuccess(SpidResponse(getCookiesList()))
                 } else {
                     startSessionTimeoutTask(true)
                 }
@@ -127,7 +126,7 @@ class SpidDialogFragment : DialogFragment() {
                             Intent.parseUri(it, Intent.URI_INTENT_SCHEME).also { intent ->
                                 startActivity(intent)
                             }
-                        } catch (unused: Exception) {
+                        } catch (_: Exception) {
                         }
                         view?.stopLoading()
                     }
@@ -169,7 +168,7 @@ class SpidDialogFragment : DialogFragment() {
         }
     }
 
-    private fun addCookies(@NonNull url: String) {
+    private fun addCookies(url: String) {
         CookieManager.getInstance().getCookie(url).let { cookies ->
             if (cookies != null) {
                 val cookiesArray = cookies.split(";")
@@ -184,8 +183,8 @@ class SpidDialogFragment : DialogFragment() {
                 }
             } else {
                 cancelSessionTimeoutTask()
-                spidCallback.onSpidFailure(SpidEvent.GENERIC_ERROR)
                 dismiss()
+                spidCallback.onSpidFailure(SpidEvent.GENERIC_ERROR)
             }
         }
     }
@@ -206,8 +205,8 @@ class SpidDialogFragment : DialogFragment() {
         timer.schedule(object : TimerTask() {
             override fun run() {
                 lifecycleScope.launch(Dispatchers.Main) {
+                    dismiss()
                     spidCallback.onSpidFailure(SpidEvent.SESSION_TIMEOUT)
-                    dismissAllowingStateLoss()
                 }
             }
         }, spidConfig.timeout.toLong() * 1000)

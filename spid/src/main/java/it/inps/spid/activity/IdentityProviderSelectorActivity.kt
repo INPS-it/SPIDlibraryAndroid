@@ -8,7 +8,6 @@ package it.inps.spid.activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -19,7 +18,14 @@ import it.inps.spid.fragment.SpidDialogFragment
 import it.inps.spid.model.IdentityProvider
 import it.inps.spid.model.SpidParams
 import it.inps.spid.model.SpidResponse
-import it.inps.spid.utils.*
+import it.inps.spid.utils.GENERIC_ERROR
+import it.inps.spid.utils.NETWORK_ERROR
+import it.inps.spid.utils.SESSION_TIMEOUT
+import it.inps.spid.utils.SPID_CONFIG_ERROR
+import it.inps.spid.utils.SUCCESS
+import it.inps.spid.utils.SpidEvent
+import it.inps.spid.utils.USER_CANCELLED
+import it.inps.spid.utils.isNetworkAvailable
 
 class IdentityProviderSelectorActivity : AppCompatActivity(), SpidDialogFragment.SpidCallback {
 
@@ -78,7 +84,7 @@ class IdentityProviderSelectorActivity : AppCompatActivity(), SpidDialogFragment
         }
     }
 
-    private fun openBrowser(@NonNull url: String) =
+    private fun openBrowser(url: String) =
         CustomTabsIntent.Builder().build().launchUrl(this, Uri.parse(url))
 
     override fun onBackPressed() {
