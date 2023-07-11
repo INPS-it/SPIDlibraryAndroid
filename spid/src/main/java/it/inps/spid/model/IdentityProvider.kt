@@ -26,6 +26,7 @@ import java.io.Serializable
  *     <li>SPID ITALIA: R.drawable.ic_spid_idp_spiditalia</li>
  *     <li>TIM: R.drawable.ic_spid_idp_timid</li>
  *     <li>TEAMSYSTEM: R.drawable.ic_spid_idp_teamsystemid</li>
+ *     <li>INTESIGROUP: R.drawable.ic_spid_idp_intesigroup</li>
  * </ul>
  *
  */
@@ -190,6 +191,20 @@ data class IdentityProvider(
                 IdentityProvider(
                     accessibilityName,
                     R.drawable.ic_spid_idp_teamsystemid,
+                    idpParameter
+                )
+            )
+            return this
+        }
+
+        fun addIntesiGroup(
+            accessibilityName: String = "IntesiGroup",
+            idpParameter: String
+        ): Builder {
+            idpList.add(
+                IdentityProvider(
+                    accessibilityName,
+                    R.drawable.ic_spid_idp_intesigroup,
                     idpParameter
                 )
             )
