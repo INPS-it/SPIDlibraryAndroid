@@ -25,7 +25,7 @@ repositories {
    }
 }
 dependencies {
-    implementation("it.inps.spid:library:1.0.9")
+    implementation("it.inps.spid:library:1.0.10")
 }
 ```
 2. Declare a variable to register the `IdentityProviderSelectorActivityContract` contract using the `registerForActivityResult(I)` method which will give a `SpidResult` object as a return value:
