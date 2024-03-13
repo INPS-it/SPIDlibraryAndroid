@@ -27,6 +27,8 @@ import it.inps.spid.model.SpidParams
 import it.inps.spid.model.SpidResponse
 import it.inps.spid.utils.SpidEvent
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Timer
 import java.util.TimerTask
@@ -41,7 +43,6 @@ class SpidDialogFragment : DialogFragment() {
         arguments?.getSerializable(IdentityProviderSelectorActivity.EXTRA_SPID_CONFIG) as SpidParams.Config
     }
     private val cookiesHashMap = HashMap<String, String>()
-    private var timer = Timer("sessionTimeout")
 
     companion object {
         const val EXTRA_POST_DATA_PROVIDER = "EXTRA_POST_DATA_PROVIDER"
@@ -106,7 +107,11 @@ class SpidDialogFragment : DialogFragment() {
                 if (url.equals(spidConfig.callbackPageUrl, ignoreCase = true)) {
                     cancelSessionTimeoutTask()
                     dismiss()
-                    spidCallback.onSpidSuccess(SpidResponse(getCookiesList()))
+                    if (getCookiesList().isNotEmpty()) {
+                        spidCallback.onSpidSuccess(SpidResponse(getCookiesList()))
+                    } else {
+                        spidCallback.onSpidFailure(SpidEvent.GENERIC_ERROR)
+                    }
                 } else {
                     startSessionTimeoutTask(true)
                 }
@@ -174,6 +179,17 @@ class SpidDialogFragment : DialogFragment() {
     }
 
     private fun addCookies(url: String) {
+        if (!isAdded) {
+            Log.e("SpidDialogFragment", "addCookies(): Fragment not attached to an activity")
+            cancelSessionTimeoutTask()
+            try {
+                dismissAllowingStateLoss()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            spidCallback.onSpidFailure(SpidEvent.GENERIC_ERROR)
+            return
+        }
         CookieManager.getInstance().getCookie(url).let { cookies ->
             if (cookies != null) {
                 val cookiesArray = cookies.split(";")
@@ -209,19 +225,16 @@ class SpidDialogFragment : DialogFragment() {
         if (cancelCurrentTimer) {
             cancelSessionTimeoutTask()
         }
-        timer = Timer("sessionTimeout")
-        timer.schedule(object : TimerTask() {
-            override fun run() {
-                lifecycleScope.launch(Dispatchers.Main) {
-                    dismiss()
-                    spidCallback.onSpidFailure(SpidEvent.SESSION_TIMEOUT)
-                }
+        lifecycleScope.launch(Dispatchers.Main) {
+            delay(spidConfig.timeout.toLong() * 1000)
+            if (isAdded && !parentFragmentManager.isDestroyed) {
+                dismiss()
             }
-        }, spidConfig.timeout.toLong() * 1000)
+            spidCallback.onSpidFailure(SpidEvent.SESSION_TIMEOUT)
+        }
     }
-
+    
     private fun cancelSessionTimeoutTask() {
-        timer.cancel()
-        timer.purge()
+        lifecycleScope.coroutineContext.cancelChildren()
     }
 }

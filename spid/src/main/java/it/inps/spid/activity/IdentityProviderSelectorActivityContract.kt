@@ -25,11 +25,18 @@ class IdentityProviderSelectorActivityContract : ActivityResultContract<SpidPara
     override fun parseResult(resultCode: Int, intent: Intent?): SpidResult {
         return when (resultCode) {
             SUCCESS -> {
+                val spidResponseSerializable = intent?.getSerializableExtra(
+                    IdentityProviderSelectorActivity.EXTRA_SPID_RESPONSE
+                )
                 SpidResult(
                     SpidEvent.SUCCESS,
-                    intent?.getSerializableExtra(
-                        IdentityProviderSelectorActivity.EXTRA_SPID_RESPONSE
-                    ) as SpidResponse
+                    if (spidResponseSerializable is SpidResponse) {
+                        intent.getSerializableExtra(
+                            IdentityProviderSelectorActivity.EXTRA_SPID_RESPONSE
+                        ) as SpidResponse
+                    } else {
+                        null
+                    }
                 )
             }
             GENERIC_ERROR -> SpidResult(SpidEvent.GENERIC_ERROR)
