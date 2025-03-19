@@ -1,15 +1,15 @@
 // 
-// SPDX-FileCopyrightText: 2023 Istituto Nazionale Previdenza Sociale
+// SPDX-FileCopyrightText: 2025 Istituto Nazionale Previdenza Sociale
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
 package it.inps.spid.activity
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.DividerItemDecoration
 import it.inps.spid.R
 import it.inps.spid.adapter.IdentityProvidersAdapter
@@ -85,9 +85,10 @@ class IdentityProviderSelectorActivity : AppCompatActivity(), SpidDialogFragment
     }
 
     private fun openBrowser(url: String) =
-        CustomTabsIntent.Builder().build().launchUrl(this, Uri.parse(url))
+        CustomTabsIntent.Builder().build().launchUrl(this, url.toUri())
 
     override fun onBackPressed() {
+        super.onBackPressed()
         setResult(USER_CANCELLED)
         finish()
     }

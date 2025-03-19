@@ -1,5 +1,5 @@
 //
-// SPDX-FileCopyrightText: 2023 Istituto Nazionale Previdenza Sociale
+// SPDX-FileCopyrightText: 2025 Istituto Nazionale Previdenza Sociale
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -11,7 +11,13 @@ import androidx.activity.result.contract.ActivityResultContract
 import it.inps.spid.model.SpidParams
 import it.inps.spid.model.SpidResponse
 import it.inps.spid.model.SpidResult
-import it.inps.spid.utils.*
+import it.inps.spid.utils.GENERIC_ERROR
+import it.inps.spid.utils.NETWORK_ERROR
+import it.inps.spid.utils.SESSION_TIMEOUT
+import it.inps.spid.utils.SPID_CONFIG_ERROR
+import it.inps.spid.utils.SUCCESS
+import it.inps.spid.utils.SpidEvent
+import it.inps.spid.utils.USER_CANCELLED
 
 class IdentityProviderSelectorActivityContract : ActivityResultContract<SpidParams, SpidResult>() {
 
@@ -39,6 +45,7 @@ class IdentityProviderSelectorActivityContract : ActivityResultContract<SpidPara
                     }
                 )
             }
+
             GENERIC_ERROR -> SpidResult(SpidEvent.GENERIC_ERROR)
             NETWORK_ERROR -> SpidResult(SpidEvent.NETWORK_ERROR)
             SESSION_TIMEOUT -> SpidResult(SpidEvent.SESSION_TIMEOUT)

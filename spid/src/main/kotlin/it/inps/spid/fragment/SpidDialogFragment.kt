@@ -1,5 +1,5 @@
 //
-// SPDX-FileCopyrightText: 2023 Istituto Nazionale Previdenza Sociale
+// SPDX-FileCopyrightText: 2025 Istituto Nazionale Previdenza Sociale
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -30,8 +30,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.Timer
-import java.util.TimerTask
 
 class SpidDialogFragment : DialogFragment() {
 
