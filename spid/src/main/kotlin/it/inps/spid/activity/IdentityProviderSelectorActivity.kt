@@ -7,6 +7,7 @@ package it.inps.spid.activity
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.net.toUri
@@ -44,6 +45,7 @@ class IdentityProviderSelectorActivity : AppCompatActivity(), SpidDialogFragment
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         binding = ActivityProviderSelectorBinding.inflate(layoutInflater)
         setContentView(binding.root)

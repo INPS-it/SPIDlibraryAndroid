@@ -9,7 +9,7 @@ SPDX-License-Identifier: BSD-3-Clause
 
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:fontFamily">@font/titilliumweb</item>

@@ -77,6 +77,8 @@ class SpidDialogFragment : DialogFragment() {
         )
     }
 
+    override fun onSaveInstanceState(outState: Bundle) = Unit
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -226,12 +228,12 @@ class SpidDialogFragment : DialogFragment() {
         lifecycleScope.launch(Dispatchers.Main) {
             delay(spidConfig.timeout.toLong() * 1000)
             if (isAdded && !parentFragmentManager.isDestroyed) {
-                dismiss()
+                dismissAllowingStateLoss()
             }
             spidCallback.onSpidFailure(SpidEvent.SESSION_TIMEOUT)
         }
     }
-    
+
     private fun cancelSessionTimeoutTask() {
         lifecycleScope.coroutineContext.cancelChildren()
     }
