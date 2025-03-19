@@ -106,17 +106,25 @@ class IdentityProviderSelectorActivity : AppCompatActivity(), SpidDialogFragment
             SpidEvent.GENERIC_ERROR -> {
                 setResult(GENERIC_ERROR)
             }
+
             SpidEvent.NETWORK_ERROR -> {
                 setResult(NETWORK_ERROR)
             }
+
             SpidEvent.SESSION_TIMEOUT -> {
                 setResult(SESSION_TIMEOUT)
             }
+
             SpidEvent.SPID_CONFIG_ERROR -> {
                 setResult(SPID_CONFIG_ERROR)
             }
+
             SpidEvent.USER_CANCELLED -> {
                 setResult(USER_CANCELLED)
+            }
+
+            else -> {
+                setResult(GENERIC_ERROR)
             }
         }
         finish()

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk = 34
+    namespace = "it.inps.spid"
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 19
-        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,15 +34,15 @@ android {
 }
 
 dependencies {
-    implementation("androidx.appcompat:appcompat:1.4.2")
-    api("androidx.activity:activity-ktx:1.4.0")
-    implementation("androidx.fragment:fragment-ktx:1.4.1")
-    implementation("androidx.browser:browser:1.4.0")
-    implementation("com.google.android.material:material:1.6.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    api("androidx.activity:activity-ktx:1.10.1")
+    implementation("androidx.fragment:fragment-ktx:1.8.6")
+    implementation("androidx.browser:browser:1.8.0")
+    implementation("com.google.android.material:material:1.12.0")
 
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 }
 
 apply(from = "$rootDir/gradle/publish_github_package.gradle")
