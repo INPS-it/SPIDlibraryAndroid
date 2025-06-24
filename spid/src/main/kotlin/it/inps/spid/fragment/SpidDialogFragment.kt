@@ -131,7 +131,7 @@ class SpidDialogFragment : DialogFragment() {
 
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 url?.let {
-                    if (it.contains("intent://")) {
+                    if (it.contains("intent://") || it.contains("myinfocert://")) {
                         try {
                             Intent.parseUri(it, Intent.URI_INTENT_SCHEME).also { intent ->
                                 startActivity(intent)
@@ -204,7 +204,7 @@ class SpidDialogFragment : DialogFragment() {
                 }
             } else {
                 if (resources.getBoolean(R.bool.log_sdk_errors)) {
-                    Log.e("SpidDialogFragment", "cookies == null")
+                    Log.e("SpidDialogFragment", "cookies == null | page: $url")
                 }
                 cancelSessionTimeoutTask()
                 dismiss()
