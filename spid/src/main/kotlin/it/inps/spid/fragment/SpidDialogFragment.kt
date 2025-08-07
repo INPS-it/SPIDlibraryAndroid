@@ -206,9 +206,6 @@ class SpidDialogFragment : DialogFragment() {
                 if (resources.getBoolean(R.bool.log_sdk_errors)) {
                     Log.e("SpidDialogFragment", "cookies == null | page: $url")
                 }
-                cancelSessionTimeoutTask()
-                dismiss()
-                spidCallback.onSpidFailure(SpidEvent.GENERIC_ERROR)
             }
         }
     }
